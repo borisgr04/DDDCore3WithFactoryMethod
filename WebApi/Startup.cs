@@ -32,8 +32,8 @@ namespace WebApi
         {
 
             #region Inyeccion de Manejo de Base de datos
-            services.AddDbContext<BancoContext>
-                (opt => opt.UseSqlServer("Server=.\\;Database=Banco;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddDbContext<BancoContext>(opt => opt.UseSqlServer(connectionString));
             #endregion
             
             #region Inyeccion de Servicios Custom
